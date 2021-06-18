@@ -40,7 +40,7 @@ func (g *StatusErrorGenerator) Scan(names ...string) {
 
 func getPkgDir(importPath string) string {
 	pkgs, err := packages.Load(&packages.Config{
-		Mode: packages.LoadFiles,
+		Mode: packages.NeedName | packages.NeedFiles | packages.NeedCompiledGoFiles,
 	}, importPath)
 	if err != nil {
 		panic(err)
